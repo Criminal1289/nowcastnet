@@ -1,16 +1,3 @@
-"""NWP-ST-NowcastNet for BJ Radar + NWP Precipitation Nowcasting.
-
-Implements the four modular improvements requested on top of NowcastNet:
-1. use_st_bias       : Factorized spatio-temporal channel bias (coord_yx + lead-time bias).
-2. use_nwp_motion    : NWP dynamic field (WS500/700/925, DVG200/850/925) guided motion & gating.
-3. use_nwp_noise     : NWP thermodynamic/moisture conditioned GAN stochastic perturbation.
-4. use_temporal_radar: Explicit ConvGRU + (2+1)D temporal modeling on radar history & forecast head.
-
-Follows MASTER.md contracts:
-- Input:  x_radar (B, 11, 10, H, W), x_nwp (B, 2, 27, H, W)
-- Output: pred_rain (B, 10, 1, H, W) in mm/6min; linear Conv2d tail (no hard ReLU), floor_at_zero in eval.
-"""
-
 import math
 from typing import Dict, Optional, Tuple
 import torch
