@@ -19,11 +19,6 @@ def make_coord_grid(b: int, h: int, w: int, device: torch.device, dtype: torch.d
 
 
 class SpatioTemporalChannelBias(nn.Module):
-    """Factorized Spatio-Temporal & Channel Bias using canonical BJ coordinates + lead-time embeddings.
-
-    Works identically across training patches and full 301x301 (320x320 padded) inference.
-    """
-
     def __init__(self, num_channels: int, hidden_dim: int = 16):
         super().__init__()
         self.num_channels = num_channels
